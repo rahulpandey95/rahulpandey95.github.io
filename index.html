@@ -1,82 +1,293 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rahul Pandey | Academic Profile</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rahul Pandey | Academic Profile</title>
+
+  <!-- Styles (modern-minimal + small dark-mode support) -->
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --accent:#0f172a;
+      --card:#f8fafc;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#071024;
+        --text:#e6eef8;
+        --muted:#9aa9bb;
+        --accent:#e6eef8;
+        --card:#07182a;
+      }
+      html { color-scheme: dark; }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Times New Roman", Georgia, serif;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+      font-size:16px;
+    }
+
+    /* Page container */
+    .wrap{max-width:980px; margin:0 auto; padding:22px;}
+
+    /* Fixed header */
+    header.site-header{
+      position:sticky;
+      top:0;
+      z-index:40;
+      background:linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.65));
+      backdrop-filter: blur(6px);
+      border-bottom:1px solid rgba(0,0,0,0.05);
+    }
+    @media (prefers-color-scheme: dark){
+      header.site-header{
+        background:linear-gradient(rgba(7,16,36,0.88), rgba(7,16,36,0.82));
+        border-bottom:1px solid rgba(255,255,255,0.04);
+      }
+    }
+    .header-inner{max-width:980px; margin:0 auto; padding:14px 22px; display:flex; align-items:center; gap:18px;}
+    .portrait{width:104px; height:104px; border-radius:50%; object-fit:cover; flex:0 0 104px; box-shadow:0 6px 20px rgba(15,23,42,0.08);}
+    .head-text{display:flex; flex-direction:column; gap:2px;}
+    .name{font-size:20px; font-weight:700; letter-spacing:0.2px;}
+    .affil{color:var(--muted); font-size:13px; margin-top:2px;}
+    nav.primary{margin-left:auto; display:flex; gap:14px; align-items:center;}
+    nav.primary a{color:var(--muted); text-decoration:none; font-size:14px; padding:8px 10px; border-radius:6px;}
+    nav.primary a:hover{color:var(--accent); text-decoration:underline;}
+
+    /* Main sections */
+    main{padding:28px 22px;}
+    section.block{padding:34px 0; border-bottom:1px solid rgba(0,0,0,0.04);}
+    @media (prefers-color-scheme: dark){
+      section.block{border-bottom:1px solid rgba(255,255,255,0.03);}
+    }
+    h2.section-title{font-size:20px; margin:0 0 12px 0; font-weight:700;}
+    p.lead{color:var(--muted); max-width:74ch; margin:0 0 12px 0;}
+
+    /* two-column layout in some sections */
+    .grid-2{display:grid; grid-template-columns:1fr 300px; gap:28px; align-items:start;}
+    @media (max-width:880px){ .grid-2{grid-template-columns:1fr; } }
+
+    .card{background:var(--card); padding:14px; border-radius:8px; border:1px solid rgba(0,0,0,0.03);}
+    @media (prefers-color-scheme: dark){ .card{border:1px solid rgba(255,255,255,0.02);} }
+
+    /* CV iframe */
+    .cv-frame{width:100%; height:680px; border:1px solid rgba(0,0,0,0.06); border-radius:6px; overflow:hidden;}
+    @media (max-width:880px){ .cv-frame{height:520px;} }
+
+    /* lists */
+    ul.clean{padding-left:1rem; margin:0; color:var(--muted)}
+    ul.clean li{margin-bottom:10px;}
+
+    /* footer / social */
+    .socials{display:flex; gap:12px; align-items:center; flex-wrap:wrap;}
+    .socials a{display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:var(--muted); font-size:13px; padding:8px; border-radius:6px;}
+    .socials a:hover{color:var(--accent)}
+    .sicon{width:18px;height:18px;display:inline-block;vertical-align:middle;opacity:0.95}
+
+    footer.site-foot{padding:26px 0; text-align:center; color:var(--muted); font-size:14px}
+
+    /* smooth scrolling link highlight */
+    a.anchor-link{scroll-margin-top:78px}
+
+    /* small responsive tweaks */
+    @media (max-width:520px){
+      .header-inner{padding:10px 14px;}
+      .portrait{width:84px;height:84px}
+      .name{font-size:18px}
+      nav.primary{display:none}
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-  <header class="header" id="home">
-    <img src="My Photo-2.jpeg" alt="Rahul Pandey" class="portrait">
-    <div>
-      <div class="title">Rahul Pandey</div>
-      <div class="tag">PhD Candidate, Centre for East Asian Studies — Jawaharlal Nehru University</div>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <img src="My Photo-2.jpeg" alt="Rahul Pandey" class="portrait">
+      <div class="head-text">
+        <div class="name">Rahul Pandey</div>
+        <div class="affil">PhD Candidate, Centre for East Asian Studies — Jawaharlal Nehru University</div>
+      </div>
+
+      <!-- Primary nav -->
+      <nav class="primary" role="navigation" aria-label="Main navigation">
+        <a class="anchor-link" href="#about">About</a>
+        <a class="anchor-link" href="#cv">My CV</a>
+        <a class="anchor-link" href="#research">Research Projects</a>
+        <a class="anchor-link" href="#blog">My Blog</a>
+        <a class="anchor-link" href="#opeds">Op-eds</a>
+        <a class="anchor-link" href="#contact">Contact</a>
+      </nav>
     </div>
-    <nav class="nav" aria-label="Primary">
-      <a href="#home">Home</a>
-      <a href="#cv">CV</a>
-      <a href="#research">Research</a>
-      <a href="#blog">Blog</a>
-      <a href="#contact">Contact</a>
-    </nav>
   </header>
 
-  <main>
-    <section class="section">
-      <h2 class="h2">About</h2>
-      <p class="lead">Rahul Pandey is a PhD candidate at Jawaharlal Nehru University (JNU), New Delhi. His research focuses on contemporary Chinese politics and the governance structures of the Chinese Communist Party (CCP). He writes on India’s domestic politics, financial markets, and strategic affairs, and contributes to policy research at think tanks.</p>
-      <div style="margin-top:16px">
-        <strong>Latest updates</strong>
-        <ul class="lead">
-          <li>2025 — Invited speaker: Revisited Bi-Polarity conference (Hong Kong)</li>
-          <li>Oct 2025 — Policy brief on CCP membership composition</li>
-          <li>Aug 2025 — Article on critical minerals and strategic security</li>
+  <!-- Page content -->
+  <div class="wrap">
+    <main>
+      <!-- About -->
+      <section id="about" class="block">
+        <h2 class="section-title">About</h2>
+        <p class="lead">Rahul Pandey is a PhD candidate at Jawaharlal Nehru University (JNU), New Delhi. His research focuses on contemporary Chinese politics and the evolving governance structures of the Chinese Communist Party (CCP). His broader interests include authoritarian political systems, global political economy, comparative politics, and the political economy of markets. Rahul writes for national and international audiences and contributes to policy research at think tanks.</p>
+
+        <div class="grid-2" style="margin-top:18px;">
+          <div>
+            <h3 style="margin:0 0 8px 0; font-size:16px">Latest updates</h3>
+            <ul class="clean">
+              <li><strong>Oct 2025</strong> — Policy brief on CCP membership composition.</li>
+              <li><strong>Aug 2025</strong> — Article on critical minerals and strategic security.</li>
+              <li><strong>2025</strong> — Invited speaker: Revisited Bi-Polarity conference, Hong Kong.</li>
+            </ul>
+
+            <h3 style="margin-top:18px; font-size:16px">New reading list</h3>
+            <ul class="clean">
+              <li>Joseph Nye — <em>Soft Power</em></li>
+              <li>Selected working papers on party organisation in China</li>
+              <li>Recent pieces on critical minerals and geopolitics</li>
+            </ul>
+          </div>
+
+          <aside>
+            <div class="card">
+              <div style="font-weight:700">Research interests</div>
+              <div style="margin-top:8px; color:var(--muted)">Chinese politics · Authoritarian governance · Political economy · Financial markets · Strategic affairs</div>
+              <div style="margin-top:12px"><a href="#cv" style="text-decoration:none; color:var(--accent)">View CV ↓</a></div>
+            </div>
+
+            <div class="card" style="margin-top:14px">
+              <div style="font-weight:700">Connect</div>
+              <div style="margin-top:8px; color:var(--muted)">
+                Email: <a href="mailto:rahulaca95@gmail.com">rahulaca95@gmail.com</a><br>
+                ORCID · Google Scholar · Substack · Twitter (X)
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- CV -->
+      <section id="cv" class="block">
+        <h2 class="section-title">My CV</h2>
+        <p class="lead">You can read the CV below or download it directly.</p>
+        <div style="margin-top:12px">
+          <iframe class="cv-frame" src="Rahul_Pandey_CV.pdf"></iframe>
+        </div>
+        <div style="margin-top:10px">
+          <a href="Rahul_Pandey_CV.pdf" download style="text-decoration:none; color:var(--accent)">Download CV (PDF)</a>
+        </div>
+      </section>
+
+      <!-- Research -->
+      <section id="research" class="block">
+        <h2 class="section-title">Research Projects</h2>
+        <p class="lead">Selected ongoing and recent research projects. (Click titles to view working papers or links if available.)</p>
+        <ul class="clean" style="margin-top:12px">
+          <li><strong>Composition and Orientation of the Communist Party Membership under Xi Jinping</strong> — ORCA (2024)</li>
+          <li><strong>Trends in CCP Composition and Orientation</strong> — VIF (2025)</li>
+          <li><strong>Working paper:</strong> Intraparty rules and party building in urban China during Xi Jinping (under review)</li>
         </ul>
-      </div>
-      <div style="margin-top:12px">
-        <strong>New reading list</strong>
-        <ul class="lead">
-          <li>Joseph Nye — <em>Soft Power</em></li>
-          <li>Recent working papers on party organisation in China</li>
-          <li>Selected articles on critical minerals and geopolitics</li>
+      </section>
+
+      <!-- Blog -->
+      <section id="blog" class="block">
+        <h2 class="section-title">My Blog</h2>
+        <p class="lead">I publish longer essays and short policy notes on Substack. Latest posts are embedded below.</p>
+        <div style="margin-top:12px; border-radius:8px; overflow:hidden; border:1px solid rgba(0,0,0,0.04)">
+          <iframe src="https://substack.com/@trackinggeopoliticalrisk" width="100%" height="620" style="border:0;"></iframe>
+        </div>
+        <div style="margin-top:12px"><a href="https://substack.com/@trackinggeopoliticalrisk" target="_blank" style="color:var(--accent)">Open Substack in a new tab</a></div>
+      </section>
+
+      <!-- Op-eds -->
+      <section id="opeds" class="block">
+        <h2 class="section-title">Op-eds & Commentary</h2>
+        <p class="lead">Selected opinion pieces and media commentary (national and international). For the full list see the CV or contact me.</p>
+        <ul class="clean" style="margin-top:12px">
+          <li>Op-ed: Title example — brief description and link (replace with real entries)</li>
+          <li>Commentary: Title example — brief description and link</li>
         </ul>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" id="cv">
-      <h2 class="h2">Curriculum Vitae</h2>
-      <p class="lead">Embedded CV — read online or download.</p>
-      <iframe src="Rahul_Pandey_CV.pdf" width="100%" height="700" style="border:1px solid rgba(0,0,0,0.06);"></iframe>
-    </section>
+      <!-- Contact -->
+      <section id="contact" class="block">
+        <h2 class="section-title">Contact</h2>
+        <p class="lead">For research inquiries, speaking requests, or media, please contact: <a href="mailto:rahulaca95@gmail.com">rahulaca95@gmail.com</a></p>
 
-    <section class="section" id="research">
-      <h2 class="h2">Research & Publications</h2>
-      <p class="lead">Selected works, issue briefs, and working papers.</p>
-      <ul class="lead">
-        <li><strong>Composition and Orientation of the Communist Party Membership under Xi Jinping</strong> — ORCA (2024)</li>
-        <li><strong>Trends in CCP Composition and Orientation</strong> — VIF (2025)</li>
-        <li><strong>Working paper:</strong> Intraparty rules and party building in urban China under Xi Jinping (under review)</li>
-      </ul>
-    </section>
+        <div style="margin-top:18px" class="card">
+          <div style="font-weight:700; margin-bottom:8px">Profiles & Social</div>
+          <div class="socials">
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/rahul-pandey-b5a382194" target="_blank" title="LinkedIn">
+              <svg class="sicon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V24h-4zM8.5 8.5h3.7v2.1h.1c.5-1 1.8-2.1 3.7-2.1 4 0 4.8 2.6 4.8 6V24h-4v-7c0-1.7 0-3.9-2.4-3.9-2.4 0-2.8 1.9-2.8 3.8V24h-4z"/></svg>
+              LinkedIn
+            </a>
 
-    <section class="section" id="blog">
-      <h2 class="h2">Blog</h2>
-      <p class="lead">Latest posts on Substack.</p>
-      <iframe src="https://rahulpandey95.substack.com" width="100%" height="600" style="border:0;"></iframe>
-    </section>
+            <!-- X / Twitter -->
+            <a href="https://twitter.com/R_Pandey95" target="_blank" title="Twitter / X">
+              <svg class="sicon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 4.6c-.8.35-1.6.6-2.5.7.9-.55 1.6-1.5 1.9-2.6-.9.55-1.9.95-3 1.2a5.2 5.2 0 0 0-8.9 4.7A14.8 14.8 0 0 1 1.6 3.2a5.2 5.2 0 0 0 1.6 6.9c-.7 0-1.3-.2-1.9-.5v.05c0 2.5 1.7 4.6 4.1 5.1-.4.1-.8.15-1.2.15-.3 0-.6 0-.9-.05a5.2 5.2 0 0 0 4.9 3.6 10.5 10.5 0 0 1-6.5 2.25c-.4 0-.8 0-1.2-.05A14.8 14.8 0 0 0 8 21c9 0 13.9-7.45 13.9-13.9v-.63c.95-.7 1.75-1.6 2.25-2.6z"/></svg>
+              X / Twitter
+            </a>
 
-    <section class="section" id="contact">
-      <h2 class="h2">Contact & Links</h2>
-      <p class="lead">Email: <a href="mailto:rahulpandey@example.com">rahulpandey@example.com</a></p>
-      <p class="lead">LinkedIn: <a href="https://www.linkedin.com/in/rahul-pandey-b5a382194" target="_blank">rahul-pandey</a></p>
-      <p class="lead">Google Scholar: <a href="https://scholar.google.com/citations?hl=en&user=Qk8AynUAAAAJ" target="_blank">Profile</a></p>
-      <p class="lead">ORCID: <a href="https://orcid.org/0009-0009-5396-7980" target="_blank">0009-0009-5396-7980</a></p>
-    </section>
-  </main>
+            <!-- Substack -->
+            <a href="https://substack.com/@trackinggeopoliticalrisk" target="_blank" title="Substack">
+              <svg class="sicon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.25v13.5A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V5.25A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25zM7.5 8.25h1.5v7.5H7.5v-7.5zM10.5 8.25h5.25v1.125H10.5V8.25zM10.5 11.25h5.25v1.125H10.5V11.25zM10.5 14.25h5.25v1.125H10.5V14.25z"/></svg>
+              Substack
+            </a>
 
-  <footer class="footer">© 2025 Rahul Pandey · Hosted on GitHub Pages</footer>
-</div>
+            <!-- Google Scholar -->
+            <a href="https://scholar.google.com/citations?user=Qk8AynUAAAAJ" target="_blank" title="Google Scholar">
+              <svg class="sicon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L2 7v11c0 .5.3.9.8 1.1.2.1.5.1.7.1.2 0 .4 0 .6-.1l3.2-1.2 3.2 1.2c.3.1.6.1.9.1s.6 0 .9-.1l3.2-1.2 3.2 1.2c.2.1.4.1.6.1.3 0 .6 0 .8-.1.5-.2.8-.6.8-1.1V7L12 2z"/></svg>
+              Scholar
+            </a>
+
+            <!-- ORCID -->
+            <a href="https://orcid.org/0009-0009-5396-7980" target="_blank" title="ORCID">
+              <svg class="sicon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.48 2 12s4.5 10 10 10 10-4.48 10-10S17.5 2 12 2zm-1.5 6.5c.8 0 1.4.7 1.4 1.5s-.6 1.5-1.4 1.5-1.4-.7-1.4-1.5.6-1.5 1.4-1.5zM12 17c-2.2 0-4-1.8-4-4h2a2 2 0 1 0 4 0c0 2.2-1.8 4-4 4z"/></svg>
+              ORCID
+            </a>
+
+            <!-- Truth Social -->
+            <a href="https://truthsocial.com/@RPandey95" target="_blank" title="Truth Social">
+              <svg class="sicon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.9 3.6 8.9 8.3 9.8V15.5H8.3V12h2.1V9.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.3V12h2.3l-.4 3.5H13V21.8C17.4 21 21 17 21 12c0-5.5-4.5-10-9-10z"/></svg>
+              Truth Social
+            </a>
+
+            <!-- Bluesky -->
+            <a href="https://bsky.app/profile/rahul.95.bsky.social" target="_blank" title="Bluesky">
+              <svg class="sicon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm2.3 14.7c-.9.6-2 .9-3.3.9-2 0-3.5-1-4.3-2.8-.1-.2.1-.5.4-.4 1.2.3 2.2.2 3.1-.2 1.1-.5 2.1-.9 3.2-1.4 1.1-.5 1.9-.9 2.6-.9.7 0 1 .9.5 1.4-.6.6-1.4 1.2-2.2 1.8z"/></svg>
+              Bluesky
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-foot">
+      © 2025 Rahul Pandey · Hosted on GitHub Pages · <a href="mailto:rahulaca95@gmail.com">rahulaca95@gmail.com</a>
+    </footer>
+  </div>
+
+  <!-- Smooth scroll behavior -->
+  <script>
+    document.querySelectorAll('a.anchor-link').forEach(a=>{
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const id = this.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){
+          const y = el.getBoundingClientRect().top + window.pageYOffset - 78;
+          window.scrollTo({top: y, behavior:'smooth'});
+        }
+      });
+    });
+  </script>
 </body>
 </html>
