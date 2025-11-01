@@ -21,11 +21,13 @@ h2{font-size:20px;margin:18px 0 10px}
 .cv-item{margin-bottom:10px}
 .oped-list{counter-reset:oped}
 .oped-item{margin:18px 0;padding-left:0;display:flex;gap:12px;align-items:flex-start}
-.oped-num{font-weight:800;color:var(--accent);min-width:36px;font-size:18px}
+.oped-num{font-weight:900;color:var(--accent);min-width:40px;font-size:18px}
 .oped-item h3{margin:0 0 4px;font-size:18px}
 .oped-item p{margin:0;color:var(--muted);font-size:14px}
 .button{display:inline-block;padding:8px 12px;border-radius:6px;background:transparent;border:1px solid rgba(0,0,0,0.08);text-decoration:none;color:var(--text)}
 .footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;margin-top:40px}
+.anchor-nav{margin-bottom:18px}
+.anchor-nav a{margin-right:12px;color:var(--text);text-decoration:none;border-bottom:1px dashed rgba(0,0,0,0.06);padding-bottom:2px}
 @media(max-width:800px){
   .navbar{padding:10px;gap:10px}
   h1{font-size:24px}
